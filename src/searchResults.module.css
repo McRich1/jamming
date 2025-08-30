@@ -1,5 +1,19 @@
 .container{
     background-color: rgb(204, 92, 204);
      width: 350px;
+     
 }
 
+.sidebyside{
+    display: flex;
+    
+}
+
+.playlist{
+    background-color: rgb(204, 92, 204);
+    margin-top: 45px;
+}
+
+.overallcontainer{
+    justify-items: center;
+}
