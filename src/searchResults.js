@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react';
-import tracks from './tracklist'
+import tracks from './tracklist';
+import styles from './searchResults.module.css' 
+
 function SearchResults ({input}){
 const[showResult, setShowResult] = useState(false);
 useEffect(()=>{
@@ -12,11 +14,10 @@ const filteredTracks = tracks.filter((track)=>
 )
          
     
-    
     return(
         <>
         <button type='button' onClick={()=>setShowResult(true)} >Search</button>
-
+        <div className={styles.container}>
         <h1>RESULTS</h1>
         {showResult && input && filteredTracks.length > 0 && (
         <ul>
@@ -25,6 +26,7 @@ const filteredTracks = tracks.filter((track)=>
   )}
         </ul>)}
         {showResult && input && filteredTracks.length === 0 && <p>No results found.</p>}
+        </div>
         </>
     );
     
