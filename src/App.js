@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Jamming from './jamming';
+import SearchBar from './searchbar';
+import SearchResults from './searchResults';
 import Header from './header'
 
 function App() {
+  const[input, setInput] = useState('');
   return (
     <div>
        <Header />
-       <Jamming />
+       <SearchBar input={input} setInput={setInput} />
+       <SearchResults input={input} setInput={setInput} />
     </div>
   );
 }
