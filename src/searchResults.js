@@ -1,56 +1,33 @@
-
+import {useState, useEffect} from 'react';
+import tracks from './tracklist'
 function SearchResults ({input}){
-    
-const tracks = [
-    {
-    id: 13,
-    title: 'love',
-    artist: 'Davido',
-    album: 'tunez'
-},
-    {
-     id: 14,
-    title: 'hate',
-    artist: 'Wizkid',
-    album: 'melody'   
-},
-    {
-    id: 15,
-    title: 'sick',
-    artist: 'Jason',
-    album: 'treasure Island'
-},
-    {
-    id: 16,
-    title: 'love',
-    artist: 'Falz',
-    album: 'trim'    
-    }]
+const[showResult, setShowResult] = useState(false);
+useEffect(()=>{
+    setShowResult(false)
+}, [input])
 
 
 const filteredTracks = tracks.filter((track)=>
     track.title.toLowerCase().includes(input.toLowerCase())
 )
-    if(!input){
-        return <h1>RESULTS</h1>
-    }
-
-    if(filteredTracks.length === 0){
-        return <h1>RESULTS</h1>
-    }
-
+         
+    
+    
     return(
         <>
+        <button type='button' onClick={()=>setShowResult(true)} >Search</button>
+
         <h1>RESULTS</h1>
+        {showResult && input && filteredTracks.length > 0 && (
         <ul>
             {filteredTracks.map((track)=>
             <li key={track.id} ><strong>{track.title}</strong> by <em>{track.artist}</em> from {track.album} <button>add</button></li>
   )}
-        </ul>
+        </ul>)}
+        {showResult && input && filteredTracks.length === 0 && <p>No results found.</p>}
         </>
     );
-  
-
+    
 
 }
 
